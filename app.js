@@ -1,6 +1,6 @@
 let numeroSecreto = generarNumeroSecreto();
 let intentos = 0;
-
+let numerosSecretos = [];
 
 function asignarTextoElemento(elemento, texto) {
     let elementoHTML = document.querySelector(elemento);
@@ -32,8 +32,13 @@ function limpiarCaja() {
 }
 
 function generarNumeroSecreto() {
-    return Math.floor(Math.random()*10)+1;
-
+    let num =  Math.floor(Math.random()*10)+1;
+    if (numerosSecretos.includes(num)){
+        return generarNumeroSecreto();  
+    }else{
+        numerosSecretos.push(num);
+        return num;
+    }
 }
 
 function condicionesIniciales() {
